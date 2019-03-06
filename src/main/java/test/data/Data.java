@@ -38,4 +38,23 @@ public class Data {
         }
         return mo / a.size();
     }
+
+    public List<Double> list(List<Double> list) {
+        List<Double> res = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            double result = 1;
+            for (int j = 1; j < list.size() - 1; j++) {
+                result += list.get(i) * list.get((i + j) % list.size());
+            }
+            res.add(result / (list.size() - 1));
+        }
+        return res;
+    }
+
+    public List<List<Double>> get(List<Double> data) {
+        List<List<Double>> list = new ArrayList<>();
+        list.add(data);
+        list.add(list(data));
+        return list;
+    }
 }
